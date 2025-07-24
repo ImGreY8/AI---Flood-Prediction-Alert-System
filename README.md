@@ -2,7 +2,7 @@
 
 This project aims to predict the likelihood of floods based on historical rainfall and water level data using machine learning techniques. It helps in early warning and disaster management by identifying flood-prone situations before they occur.
 
-# Model Used: Randon Forest Classifier
+# Model Used: Random Forest Classifier
 
 ![flood-Prj-img1](https://github.com/user-attachments/assets/9a93bfb8-4a54-4693-86df-986438565f8b)
 
