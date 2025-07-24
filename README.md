@@ -20,4 +20,4 @@ This project aims to predict the likelihood of floods based on historical rainfa
 
 - Python
 - Pandas, NumPy
-- Scikit-learn / XGBoost (as applicable)
+- Scikit-learn
