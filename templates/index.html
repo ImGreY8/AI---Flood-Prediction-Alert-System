@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flood Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type=number], input[type=submit] {
+      padding: 8px;
+      width: 200px;
+    }
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    h3 {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Flood Prediction Form</h2>
+  <form action="/predict" method="post">
+    <label for="rainfall">Rainfall (mm):</label><br>
+    <input type="number" id="rainfall" name="rainfall" step="0.01" required><br><br>
+
+    <label for="river_level">River Level (m):</label><br>
+    <input type="number" id="river_level" name="river_level" step="0.01" required><br><br>
+
+    <label for="humidity">Humidity (%):</label><br>
+    <input type="number" id="humidity" name="humidity" step="0.01" required><br><br>
+
+    <label for="temperature">Temperature (°C):</label><br>
+    <input type="number" id="temperature" name="temperature" step="0.01" required><br><br>
+
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if result %}
+    <h3>Prediction Result : {{ result }}</h3>
+  {% endif %}
+</body>
+</html>
