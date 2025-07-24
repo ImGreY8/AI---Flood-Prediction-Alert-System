@@ -1,50 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flood Prediction</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1c1b2e;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+    .left {
+      flex: 1;
+      background: url("/static/img.png") no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+    .left h1 {
+      font-size: 2rem;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .right {
+      flex: 1;
+      background-color: #26243a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    .right h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #ffffff;
     }
     form {
-      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
     }
-    input[type=number], input[type=submit] {
-      padding: 8px;
-      width: 200px;
+    label {
+      margin-top: 1rem;
+      color: #bbb;
     }
-    input[type=submit] {
-      background-color: #4CAF50;
-      color: white;
+    input[type="number"] {
+      padding: 0.7rem;
+      border-radius: 8px;
       border: none;
-      cursor: pointer;
+      margin-top: 0.3rem;
+      background-color: #373457;
+      color: white;
+      font-size: 1rem;
     }
-    h3 {
-      color: #333;
+    input[type="number"]:focus {
+      outline: 2px solid #6c5ce7;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem;
+      background-color: #6c5ce7;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #4b3cc4;
+    }
+    .result {
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: #00ffb3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left, .right {
+        border-radius: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Flood Prediction Form</h2>
-  <form action="/predict" method="post">
-    <label for="rainfall">Rainfall (mm):</label><br>
-    <input type="number" id="rainfall" name="rainfall" step="0.01" required><br><br>
+  <div class="container">
+    <div class="left">
+      <h1>Flood Prediction & Alert System</h1>
+    </div>
+    <div class="right">
+      <h2>Predict Flood Risk</h2>
+      <form action="/predict" method="POST">
+        <label for="rainfall">Rainfall (mm):</label>
+        <input type="number" name="rainfall" step="any" required>
 
-    <label for="river_level">River Level (m):</label><br>
-    <input type="number" id="river_level" name="river_level" step="0.01" required><br><br>
+        <label for="humidity">Humidity (%):</label>
+        <input type="number" name="humidity" step="any" required>
 
-    <label for="humidity">Humidity (%):</label><br>
-    <input type="number" id="humidity" name="humidity" step="0.01" required><br><br>
+        <label for="temperature">Temperature (°C):</label>
+        <input type="number" name="temperature" step="any" required>
 
-    <label for="temperature">Temperature (°C):</label><br>
-    <input type="number" id="temperature" name="temperature" step="0.01" required><br><br>
+        <label for="river_level">River Level (m):</label>
+        <input type="number" name="river_level" step="any" required>
 
-    <input type="submit" value="Predict">
-  </form>
+        <button type="submit">Check Flood Risk</button>
+      </form>
 
-  {% if result %}
-    <h3>Prediction Result : {{ result }}</h3>
-  {% endif %}
+      {% if result %}
+        <h3 class="result">Prediction Result: {{ result }}</h3>
+      {% endif %}
+    </div>
+  </div>
 </body>
 </html>

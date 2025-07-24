@@ -19,4 +19,3 @@ model_path = os.path.join(os.path.dirname(__file__), "flood_model.pkl")
 joblib.dump(model, model_path)
 
 print("✅ Model trained and saved as flood_model.pkl")
-print("testing done")
